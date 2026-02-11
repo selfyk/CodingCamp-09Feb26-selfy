@@ -4,12 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selfy's page</title>
+    <title>My Website</title>
+    <link href="/CSS/style.css" rel="stylesheet" type="text/css">
+    <nav id="navigation">
+        <table>
+            <tr>
+                <header class="navbar">
+                    <img src="selfy.jpg" alt="Selfy's photo" height="20">
+                    <nav class="navigation">
+                        <a href="#home">Home</a>
+                        <a href="#about">Our Profile</a>
+                        <a href="#services">Portofolio</a>
+                        <a href="#contact">Message Us</a>
+                    </nav>
+                </header>
+            </tr>
+        </table>
+    </nav>
 </head>
 
 <body>
-    <h1>Welcome to Selfy's page!</h1>
-    <p>This is a simple HTML page created by Selfy.</p>
+    <hr>
+    <hr>
+    <div class="body">
+        <h2>Hi Selfy, Welcome To Website</h2>
+        <p>Ini adalah website latihan pertama</p>
+    </div>
+    <div class="footer">
+        <hr>
+        <hr>
+        <h3>Our Headquarter</h3>
+        <table>
+            <td>Jakarta</td>
+            <td>Bandung</td>
+            <td>Surabaya</td>
+        </table>
+        <hr>
+        <table>
+            <thead>
+                <h3>Message Us</h3>
+            </thead>
+            <td>
+                <p>Nama : <input type="text" placeholder="Nama"></p>
+                <p>Tanggal Lahir : <input type="date"> </p>
+                <p>Jenis Kelamin :
+                    <input type="radio" name="gender"> Laki-Laki
+                    <input type="radio" name="gender"> Perempuan
+                </p>
+                <p>Pesan : <br> <textarea cols="30" rows="10" placeholder="Pesan"></textarea></p>
+                <button>Submit</button>
+            </td>
+            <td>
+                <textarea placeholder="output here...."></textarea>
+            </td>
+        </table>
+    </div>
+    <hr>
+    <p style="text-align: right;">Created By Selfy</p>
 </body>
 
 </html>

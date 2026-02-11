@@ -1,0 +1,38 @@
+button {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    background-position: center;
+}
+
+nav {
+    background-position: right;
+    margin-left: auto;
+}
+
+.navbar {
+    display: flex;
+    /* Aligns items along the main axis (horizontally) */
+    justify-content: flex-end;
+    /* Optional: adds space to the sides */
+    padding: 10px 20px;
+    /* Optional: background for visibility */
+    background-color: #fffff;
+}
+
+.navigation a {
+    /* Optional: adds spacing between links */
+    font-size: small;
+    margin-left: 12px;
+    text-decoration: none;
+    color: #000;
+}
+
+.body {
+    /* Determines the size of the body */
+    width: 1366px;
+    height: 578px;
+}
+
+td {
+    padding: 0px 20px;
+}
