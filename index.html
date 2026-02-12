@@ -4,76 +4,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>Selfy's Portofolio</title>
 
     <!-- CSS External -->
-    <link href="/CSS/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/CSS/style.css" type="text/css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
     <!-- Header Content -->
-    <header>
-        <nav id="navigation">
-            <table>
-                <tr>
-                    <header class="navbar">
-                        <img src="selfy.jpg" alt="Selfy's photo" height="20">
-                        <nav class="navigation">
-                            <a href="#home">Home</a>
-                            <a href="#about">Our Profile</a>
-                            <a href="#services">Portofolio</a>
-                            <a href="#contact">Message Us</a>
-                        </nav>
-                    </header>
-                </tr>
-            </table>
+    <header class="flex justify-between items-center p-4">
+        <!-- Logo -->
+        <div class="logo"></div>
+
+        <!-- Navigation Menu -->
+        <!-- <img src="selfy.jpg" alt="Selfy's photo" height="20"> -->
+        <nav class="flex">
+            <a class="border rounded p-2" href="#home">Home</a>
+            <a class="border rounded p-2" href="#about">My Profile</a>
+            <a class="border rounded p-2" href="#services">Portofolio</a>
+            <a class="border rounded p-2" href="#contact">Message Us</a>
         </nav>
-        <hr>
-        <hr>
     </header>
+
+    <hr />
 
     <!-- Main Content -->
     <main>
-        <h2>Hi Selfy, Welcome To Website</h2>
-        <p>Ini adalah website latihan pertama</p>
-        <hr>
+        <!-- Home Page -->
+        <section id="home-page" class="min-h-[500px] text-center content-center">
+            <h2 class="text-xl font-bold" id="welcome-speech">Welcome to My Website</h2>
+            <p>This is where you can see the garden of my creations~</p>
+        </section>
+
+        <hr />
+
+        <!-- Our Progile Page -->
+        <section id="our-profile-page" class="min-h-[500px] text-center content-center">
+            <h2 class="text-xl font-bold">About Selfy</h2>
+            <p>Selfy is someone who likes to explore new things and tinker with the shiny new ones to create some shiny
+                new projects!</p>
+        </section>
     </main>
+
+    <hr />
+
+    <!-- Portofolio Page -->
+    <section id="portofolio-page" class="min-h-[500px] text-center content-center">
+        <h2 class="text-xl font-bold">My Portofolio</h2>
+        <p class="mt-2">Take a look at what I've created based on my skills and expertise.</p>
+    </section>
+
+    <hr />
+
+    <!-- Message Me Page -->
+    <section id="message-me-page" class="min-h-[500px] mx-8">
+        <header>
+            <h2 class="text-xl font-bold">Message Me</h2>
+            <p class="mt-2">If you have any questions or inquiries, please don't hesitate to reach out to me.</p>
+        </header>
+
+        <form>
+            <div class="mb-4">
+                <label class="block mb-2" for="name">Name:</label>
+                <input class="w-full p-2 border rounded" type="text" id="name" name="name" required />
+            </div>
+            <div class="mb-4">
+                <label class="block mb-2" for="email">Email:</label>
+                <input class="w-full p-2 border rounded" type="email" id="email" name="email" required />
+            </div>
+            <div class="mb-4">
+                <label class="block mb-2" for="message">Message:</label>
+                <textarea class="w-full p-2 border rounded" id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button">
+                Send Message
+            </button>
+        </form>
+    </section>
 
     <!-- Footer Content -->
     <footer>
-        <hr>
-        <h3>Our Headquarter</h3>
-        <table>
-            <td>Jakarta</td>
-            <td>Bandung</td>
-            <td>Surabaya</td>
-        </table>
-        <hr>
-        <table>
-            <thead>
-                <h3>Message Us</h3>
-            </thead>
-            <td>
-                <p>Nama : <input type="text" placeholder="Nama"></p>
-                <p>Tanggal Lahir : <input type="date"> </p>
-                <p>Jenis Kelamin :
-                    <input type="radio" name="gender"> Laki-Laki
-                    <input type="radio" name="gender"> Perempuan
-                </p>
-                <p>Pesan : <br> <textarea cols="30" rows="10" placeholder="Pesan"></textarea></p>
-                <button>Submit</button>
-            </td>
-            <td>
-                <textarea placeholder="output here...."></textarea>
-            </td>
-        </table>
-        </div>
-        <hr>
-        <p style="text-align: right;">Created By Selfy</p>
+        <p style="text-align: right;">&copy; 2026 Selfy's Portofolio</p>
     </footer>
 
     <!-- JavaScript External -->
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>
