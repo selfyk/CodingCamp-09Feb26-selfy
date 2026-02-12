@@ -63,28 +63,35 @@ let hasMoved = false;
 
 const modalImg = document.getElementById("popupImage");
 
-// --- 1. THE ZOOM-AT-POINT ENGINE (Google Style) ---
+// --- 1. THE "PINNED" ZOOM ENGINE ---
 modalImg.onwheel = function (e) {
     e.preventDefault();
 
-    const xs = (e.clientX - pointX) / scale;
-    const ys = (e.clientY - pointY) / scale;
+    // 1. Determine the zoom direction and speed
     const delta = e.deltaY / -1000;
+    const nextScale = Math.min(Math.max(1, scale + delta), 4);
 
-    let newScale = scale + delta;
-    newScale = Math.min(Math.max(1, newScale), 4); // Min 1x, Max 4x
+    // 2. Calculate where the mouse is relative to the image center
+    // We use getBoundingClientRect to get the absolute position of the image on screen
+    const rect = modalImg.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
 
-    // Calculate new position so it zooms into the mouse cursor
-    if (newScale > 1) {
-        pointX = e.clientX - xs * newScale;
-        pointY = e.clientY - ys * newScale;
-    } else {
-        // Reset to center if zoomed all the way out
+    // 3. The Math: Adjust pointX and pointY so the point under the mouse stays still
+    if (nextScale !== scale) {
+        const ratio = 1 - nextScale / scale;
+        pointX += (mouseX - rect.width / 2) * ratio;
+        pointY += (mouseY - rect.height / 2) * ratio;
+        scale = nextScale;
+    }
+
+    // 4. Reset to center if zoomed all the way out
+    if (scale <= 1) {
+        scale = 1;
         pointX = 0;
         pointY = 0;
     }
 
-    scale = newScale;
     updateTransform();
 };
 
@@ -129,14 +136,16 @@ window.onmouseup = function (e) {
 
 // --- 3. THE TRANSFORM & CURSOR ENGINE ---
 function updateTransform() {
-    // Cursor Logic: Only shows zoom/grab over the image
+    // Apply the scale and the translation together
+    // Note: order matters in CSS transforms, but here we use translate then scale
+    modalImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+
+    // Cursor feedback
     if (scale === 1) {
         modalImg.style.cursor = "zoom-in";
     } else {
         modalImg.style.cursor = isDragging ? "grabbing" : "grab";
     }
-
-    modalImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
 }
 
 // --- 4. MODAL WRAPPERS ---
