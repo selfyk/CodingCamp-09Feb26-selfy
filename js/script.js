@@ -52,3 +52,28 @@ inputForm.addEventListener('submit', (event) => {
 <b>Jenis Kelamin</b> : ${genderForm}
 <b>Pesan</b> : ${messageForm}</div>`;
 });
+
+// MODAL FEATURE
+// Function to open the popup
+function openPopup(imageSrc, title) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("popupImage");
+    const captionText = document.getElementById("modal-caption");
+
+    modal.style.display = "block";
+    modalImg.src = imageSrc;
+    captionText.innerHTML = title;
+}
+
+// Function to close the popup
+function closePopup() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+// Close modal if user clicks the dark background
+window.onclick = function (event) {
+    const modal = document.getElementById("imageModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}

@@ -98,17 +98,17 @@
 
         <div class="portofolio-container">
             <div class="porto-item">
-                <div class="circle" id="circle-1"></div>
+                <div class="circle" id="circle-1" onclick="openPopup('CSS/img-1.png', '2D Art Project')"></div>
                 <p>2D Art Project</p>
             </div>
 
             <div class="porto-item">
-                <div class="circle" id="circle-2"></div>
+                <div class="circle" id="circle-2" onclick="openPopup('CSS/img-2.png', 'Portrait Art Project')"></div>
                 <p>Portrait Art Project</p>
             </div>
 
             <div class="porto-item">
-                <div class="circle" id="circle-3"></div>
+                <div class="circle" id="circle-3" onclick="openPopup('CSS/img-3.png', 'Semi-Realism Project')"></div>
                 <p>Semi-Realism Project</p>
             </div>
         </div>
@@ -168,6 +168,13 @@
     <footer>
         <p style="text-align: right; margin-right: 50px;">&copy; 2026 Created By Selfy</p>
     </footer>
+
+    <!-- Image Feature -->
+    <div id="imageModal" class="modal">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <img class="modal-content" id="popupImage">
+        <div id="modal-caption"></div>
+    </div>
 
     <!-- JavaScript External -->
     <script src="./js/script.js"></script>
