@@ -71,7 +71,7 @@ p {
 .portofolio-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     /* Spaces items evenly across the row */
     align-items: flex-start;
     margin-top: 40px;
@@ -91,8 +91,8 @@ p {
 
 /* The Circle Shape */
 .circle {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     border: 1px solid black;
     border-radius: 50%;
     /* This makes it a perfect circle */
@@ -145,7 +145,6 @@ p {
 #inputForm {
     display: flex;
     flex-direction: column;
-    /* FIXED: Changed from 'row' to 'column' */
     gap: 8px;
     width: 100%;
 }
