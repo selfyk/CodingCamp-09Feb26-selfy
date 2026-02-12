@@ -9,6 +9,7 @@
     margin-left: 50px;
 }
 
+/* NAVIGATION LAYOUT */
 .nav-container {
     display: flex;
     justify-content: center;
@@ -39,6 +40,7 @@
     background-color: #f0f0f0;
 }
 
+/* COMMON LAYOUT */
 body {
     font-family: "Varta", sans-serif;
     font-optical-sizing: auto;
@@ -51,6 +53,20 @@ footer {
     margin: 40px 0px 40px 0px;
 }
 
+table {
+    margin: 0 80px 0 100px;
+    text-align: left;
+    /* Adding equal size of each rows */
+    table-layout: fixed;
+    /* Setting the table layout */
+    border-collapse: collapse;
+}
+
+thead {
+    font-size: larger;
+    font-weight: bold;
+}
+
 /* --- Keep your exact Heading/Paragraph margins --- */
 h2 {
     margin: 80px 0 20px 100px;
@@ -59,10 +75,15 @@ h2 {
     text-align: left;
 }
 
+h3 {
+    margin: 20px 80px 20px 100px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+}
+
 p {
-    margin: 0 80px 0 100px;
-    font-weight: normal;
-    font-size: 16px;
+    margin: 0px 80px 10px 100px;
     text-align: left;
 }
 
@@ -91,8 +112,8 @@ p {
 
 /* The Circle Shape */
 .circle {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border: 1px solid black;
     border-radius: 50%;
     /* This makes it a perfect circle */
