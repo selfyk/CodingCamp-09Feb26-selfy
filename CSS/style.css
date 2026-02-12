@@ -287,17 +287,35 @@ button[type="submit"]:hover {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     /* Dark overlay */
+    transition: transform 0.25s ease;
+    /* Makes the zoom smooth */
+    cursor: default;
+    touch-action: none;
+    /* Prevents the whole page from scrolling while zooming */
 }
 
 /* The Image */
+/* The image itself controls the zoom/grab cursors */
 .modal-content {
     margin: auto;
     display: block;
     max-width: 80%;
     max-height: 80%;
-    margin-top: 50px;
-    border: 5px solid white;
-    border-radius: 10px;
+    user-select: none;
+    transition: transform 0.1s ease-out;
+    /* We will set the cursor dynamically in JS */
+}
+
+.modal-content:active {
+    cursor: grabbing;
+    /* Shows a closed hand when dragging */
+}
+
+/* Class to trigger when zoomed */
+.modal-content.zoomed {
+    transform: scale(2);
+    /* Adjust this number for how much zoom you want */
+    cursor: zoom-out;
 }
 
 /* Close Button */

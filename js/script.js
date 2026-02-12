@@ -54,26 +54,124 @@ inputForm.addEventListener('submit', (event) => {
 });
 
 // MODAL FEATURE
-// Function to open the popup
-function openPopup(imageSrc, title) {
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("popupImage");
-    const captionText = document.getElementById("modal-caption");
+let scale = 1;
+let pointX = 0;
+let pointY = 0;
+let start = { x: 0, y: 0 };
+let isDragging = false;
+let hasMoved = false;
 
-    modal.style.display = "block";
-    modalImg.src = imageSrc;
-    captionText.innerHTML = title;
+const modalImg = document.getElementById("popupImage");
+
+// --- 1. THE ZOOM-AT-POINT ENGINE (Google Style) ---
+modalImg.onwheel = function (e) {
+    e.preventDefault();
+
+    const xs = (e.clientX - pointX) / scale;
+    const ys = (e.clientY - pointY) / scale;
+    const delta = e.deltaY / -1000;
+
+    let newScale = scale + delta;
+    newScale = Math.min(Math.max(1, newScale), 4); // Min 1x, Max 4x
+
+    // Calculate new position so it zooms into the mouse cursor
+    if (newScale > 1) {
+        pointX = e.clientX - xs * newScale;
+        pointY = e.clientY - ys * newScale;
+    } else {
+        // Reset to center if zoomed all the way out
+        pointX = 0;
+        pointY = 0;
+    }
+
+    scale = newScale;
+    updateTransform();
+};
+
+// --- 2. CLICK & DRAG LOGIC ---
+modalImg.onmousedown = function (e) {
+    e.preventDefault();
+    isDragging = true;
+    hasMoved = false;
+    // Record where the mouse started relative to the image position
+    start = { x: e.clientX - pointX, y: e.clientY - pointY };
+};
+
+window.onmousemove = function (e) {
+    if (!isDragging) return;
+    hasMoved = true;
+
+    if (scale > 1) {
+        pointX = e.clientX - start.x;
+        pointY = e.clientY - start.y;
+        updateTransform();
+    }
+};
+
+window.onmouseup = function (e) {
+    // CLICK TO TOGGLE (Only if we didn't drag)
+    if (!hasMoved && isDragging) {
+        if (scale > 1) {
+            scale = 1;
+            pointX = 0;
+            pointY = 0;
+        } else {
+            scale = 2;
+            // When clicking to zoom, we zoom toward the mouse click
+            pointX = e.clientX - (e.clientX - pointX) * 2 / scale;
+            pointY = e.clientY - (e.clientY - pointY) * 2 / scale;
+        }
+        updateTransform();
+    }
+    isDragging = false;
+    updateTransform(); // Refresh cursor
+};
+
+// --- 3. THE TRANSFORM & CURSOR ENGINE ---
+function updateTransform() {
+    // Cursor Logic: Only shows zoom/grab over the image
+    if (scale === 1) {
+        modalImg.style.cursor = "zoom-in";
+    } else {
+        modalImg.style.cursor = isDragging ? "grabbing" : "grab";
+    }
+
+    modalImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
 }
 
-// Function to close the popup
+// --- 4. MODAL WRAPPERS ---
+function openPopup(imageSrc, title) {
+    document.getElementById("imageModal").style.display = "block";
+    modalImg.src = imageSrc;
+    document.getElementById("modal-caption").innerHTML = title;
+
+    // Reset image to original state on every open
+    scale = 1;
+    pointX = 0;
+    pointY = 0;
+    updateTransform();
+}
+
 function closePopup() {
     document.getElementById("imageModal").style.display = "none";
 }
 
-// Close modal if user clicks the dark background
-window.onclick = function (event) {
-    const modal = document.getElementById("imageModal");
-    if (event.target == modal) {
-        modal.style.display = "none";
+// Close when clicking the dark background (the modal div, not the image)
+document.getElementById("imageModal").onclick = function (e) {
+    if (e.target === this) {
+        closePopup();
     }
-}
+};
+
+// Double Tap Zoom Feature for Mobile UX
+let lastTap = 0;
+modalImg.addEventListener('touchend', function (e) {
+    let currentTime = new Date().getTime();
+    let tapLength = currentTime - lastTap;
+    if (tapLength < 500 && tapLength > 0) {
+        // Double Tap Detected
+        modalImg.classList.toggle("zoomed");
+        e.preventDefault();
+    }
+    lastTap = currentTime;
+});
