@@ -3,7 +3,7 @@ welcomeMessage();
 // Welcome Message Function
 function welcomeMessage() {
     // Show Popup
-    let name = prompt("Welcome to Yama Company! What is your name?");
+    let name = prompt("Welcome to Selfy's Portofolio! What is your name?");
 
     // validate input
     if (name == null || name.trim() === "") {
