@@ -4,13 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selfy's Portofolio</title>
+    <title>Selfy's Company</title>
 
     <!-- CSS External -->
     <link rel="stylesheet" href="/CSS/style.css" type="text/css">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Custom Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varta:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -20,12 +25,11 @@
         <div class="logo"></div>
 
         <!-- Navigation Menu -->
-        <!-- <img src="selfy.jpg" alt="Selfy's photo" height="20"> -->
-        <nav class="flex">
-            <a class="border rounded p-2" href="#home">Home</a>
-            <a class="border rounded p-2" href="#about">My Profile</a>
-            <a class="border rounded p-2" href="#services">Portofolio</a>
-            <a class="border rounded p-2" href="#contact">Message Us</a>
+        <nav class="nav-container">
+            <a href="#home-page">Home</a>
+            <a href="#about-us">Our Profile</a>
+            <a href="#portofolio">Portofolio</a>
+            <a href="#contact">Message Us</a>
         </nav>
     </header>
 
@@ -34,60 +38,99 @@
     <!-- Main Content -->
     <main>
         <!-- Home Page -->
-        <section id="home-page" class="min-h-[500px] text-center content-center">
-            <h2 class="text-xl font-bold" id="welcome-speech">Welcome to My Website</h2>
-            <p>This is where you can see the garden of my creations~</p>
+        <section id="home-page" class="min-h-[578px] mx-8">
+            <h2 class="text-xl font-bold" id="welcome-speech">Welcome to Our Website</h2>
+            <p>Ini adalah website latihan pertama.</p>
         </section>
 
         <hr />
 
         <!-- Our Profile Page -->
-        <section id="our-profile-page" class="min-h-[500px] text-center content-center">
-            <h2 class="text-xl font-bold">About Selfy</h2>
-            <p>Selfy is someone who likes to explore new things and tinker with the shiny new ones to create some shiny
-                new projects!</p>
+        <section id="about-us" class="min-h-[300px] mx-8">
+            <h2 class="text-xl font-bold">About Us</h2>
+            <p>Selfy's company provides a service to explore new things and tinker with the shiny new ones to create
+                some shiny new projects!</p>
         </section>
     </main>
 
     <hr />
 
     <!-- Portofolio Page -->
-    <section id="portofolio-page" class="min-h-[500px] text-center content-center">
-        <h2 class="text-xl font-bold">My Portofolio</h2>
-        <p class="mt-2">Take a look at what I've created based on my skills and expertise.</p>
+    <section id="portofolio" class="min-h-[300px] mx-8">
+        <h2 class="text-2xl font-bold">Our Portofolio</h2>
+        <p class="mt-2">Take a look at what we created based on our skills and expertise.</p>
+
+        <div class="portofolio-container">
+            <div class="porto-item">
+                <div class="circle" id="circle-1"></div>
+                <p>Project 1</p>
+            </div>
+
+            <div class="porto-item">
+                <div class="circle" id="circle-2"></div>
+                <p>Project 2</p>
+            </div>
+
+            <div class="porto-item">
+                <div class="circle" id="circle-3"></div>
+                <p>Project 3</p>
+            </div>
+        </div>
     </section>
 
     <hr />
 
-    <!-- Message Me Page -->
-    <section id="message-me-page" class="min-h-[500px] mx-8">
-        <header>
-            <h2 class="text-xl font-bold">Message Me</h2>
-            <p class="mt-2">If you have any questions or inquiries, please don't hesitate to reach out to me.</p>
-        </header>
+    <!-- Message Us Page -->
+    <section id="contact" class="min-h-[300px] mx-8">
+        <div class="contact-content">
+            <h2 class="text-2xl font-bold">Message Us</h2>
 
-        <form>
-            <div class="mb-4">
-                <label class="block mb-2" for="name">Name:</label>
-                <input class="w-full p-2 border rounded" type="text" id="name" name="name" required />
-            </div>
-            <div class="mb-4">
-                <label class="block mb-2" for="email">Email:</label>
-                <input class="w-full p-2 border rounded" type="email" id="email" name="email" required />
-            </div>
-            <div class="mb-4">
-                <label class="block mb-2" for="message">Message:</label>
-                <textarea class="w-full p-2 border rounded" id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button">
-                Send Message
-            </button>
-        </form>
+            <!-- Input Form -->
+            <section class="container-flex">
+                <div class="form-side">
+                    <form id="inputForm" onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="name"><span>Nama</span> <span>:</span></label>
+                            <input type="text" id="name" placeholder="Nama" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthdate"><span>Tanggal Lahir</span> <span>:</span></label>
+                            <input type="date" id="birthdate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label><span>Jenis Kelamin</span> <span>:</span></label>
+                            <div class="radio-group">
+                                <input type="radio" id="laki" name="gender" value="Laki-Laki" required>
+                                <label for="laki" class="radio-label">Laki-Laki</label>
+                                <input type="radio" id="perempuan" name="gender" value="Perempuan">
+                                <label for="perempuan" class="radio-label">Perempuan</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message"><span>Pesan</span> <span>:</span></label>
+                            <textarea id="message" placeholder="Pesan" required></textarea>
+                        </div>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+                <!-- Output Box -->
+                <section id="output">
+                    <output id="outputBox"></output>
+                </section>
+            </section>
+        </div>
     </section>
+
+    <hr />
 
     <!-- Footer Content -->
     <footer>
-        <p style="text-align: right;">&copy; 2026 Selfy's Portofolio</p>
+        <p style="text-align: right; margin-right: 50px;">&copy; 2026 Created By Selfy</p>
     </footer>
 
     <!-- JavaScript External -->
