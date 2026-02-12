@@ -40,6 +40,21 @@
     background-color: #f0f0f0;
 }
 
+/* EMBED LAYOUT */
+.embed-container {
+    position: relative;
+    width: 1040px;
+    height: 350px;
+    padding-bottom: 0;
+    box-shadow: 0 2px 8px 0 rgba(63, 69, 81, 0.16);
+    margin-bottom: 0.9em;
+    overflow: hidden;
+    border-radius: 8px;
+    will-change: transform;
+    align-items: center;
+    margin-left: 80px;
+}
+
 /* COMMON LAYOUT */
 body {
     font-family: "Varta", sans-serif;
