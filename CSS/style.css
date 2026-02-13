@@ -277,6 +277,7 @@ button[type="submit"]:hover {
 }
 
 /* MODAL LAYOUT */
+/* Update your .modal to keep it centered */
 .modal {
     display: none;
     position: fixed;
@@ -286,24 +287,41 @@ button[type="submit"]:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    /* Dark overlay */
-    transition: transform 0.25s ease;
-    /* Makes the zoom smooth */
-    cursor: default;
-    touch-action: none;
-    /* Prevents the whole page from scrolling while zooming */
+    align-items: center;
+    justify-content: center;
 }
 
-/* The Image */
-/* The image itself controls the zoom/grab cursors */
+/* NEW: The wrapper that holds both */
+.modal-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .modal-content {
-    margin: auto;
     display: block;
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 80vw;
+    max-height: 80vh;
     user-select: none;
     transition: transform 0.1s ease-out;
-    /* We will set the cursor dynamically in JS */
+    transform-origin: center;
+}
+
+/* Updated Caption: Positioned absolutely below the image */
+#modal-caption {
+    position: absolute;
+    top: 100%;
+    /* Places text starting exactly at the bottom of the image */
+    padding-top: 15px;
+    /* Creates the gap */
+    color: white;
+    font-size: 20px;
+    font-family: "Varta", sans-serif;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+    /* Allows clicks to pass through to the modal background */
 }
 
 .modal-content:active {
@@ -321,12 +339,14 @@ button[type="submit"]:hover {
 /* Close Button */
 .close-btn {
     position: absolute;
+    /* Takes it out of the flex flow */
     top: 20px;
     right: 35px;
     color: white;
-    font-size: 60px;
-    font-weight: bold;
+    font-size: 40px;
     cursor: pointer;
+    z-index: 10001;
+    /* Stays above the image */
 }
 
 .close-btn:hover {

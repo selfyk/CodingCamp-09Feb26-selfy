@@ -136,11 +136,11 @@ window.onmouseup = function (e) {
 
 // --- 3. THE TRANSFORM & CURSOR ENGINE ---
 function updateTransform() {
-    // Apply the scale and the translation together
-    // Note: order matters in CSS transforms, but here we use translate then scale
+    // The caption will stay attached to the bottom of the image 
+    // because of the "position: absolute" and "top: 100%"
     modalImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
 
-    // Cursor feedback
+    // Update cursor logic
     if (scale === 1) {
         modalImg.style.cursor = "zoom-in";
     } else {
@@ -150,7 +150,7 @@ function updateTransform() {
 
 // --- 4. MODAL WRAPPERS ---
 function openPopup(imageSrc, title) {
-    document.getElementById("imageModal").style.display = "block";
+    document.getElementById("imageModal").style.display = "flex";
     modalImg.src = imageSrc;
     document.getElementById("modal-caption").innerHTML = title;
 
